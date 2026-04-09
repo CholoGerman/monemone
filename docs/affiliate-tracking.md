@@ -59,3 +59,7 @@ Create a trigger on **Custom Event** `affiliate_click` and pass the variables `a
 4. Set `NEXT_PUBLIC_ADSENSE_CLIENT` and the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables in Vercel (Production) if you override defaults, then redeploy.
 5. `components/AdSlot.tsx` shows real ads when slot env vars are set; otherwise it keeps the dashed placeholder until you add units.
 6. Keep ad density moderate; pair with your existing cookie banner and legal pages.
+
+## After launch
+
+See **`docs/post-launch-checklist.md`** for domain URL alignment, Search Console, AdSense verification, GA4 realtime checks, and contact/affiliate env vars.

@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
 
-import { getAllPosts } from "@/lib/content";
+import { getAllPosts } from "@/lib/posts-index";
 import { siteConfig } from "@/lib/seo";
+
+function safeLastModified(isoDate: string): Date {
+  const d = new Date(isoDate);
+  return Number.isNaN(d.getTime()) ? new Date() : d;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -45,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const posts = getAllPosts().map((post) => ({
     url: `${siteConfig.baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: safeLastModified(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

@@ -54,7 +54,8 @@ Create a trigger on **Custom Event** `affiliate_click` and pass the variables `a
 ## Google AdSense (when you are ready)
 
 1. Apply in the [Google AdSense](https://www.google.com/adsense/) console once you have enough useful pages and some traffic.
-2. After approval, create **display ad units** and copy your publisher ID (`ca-pub-…`) and each **ad slot** ID.
-3. Set `NEXT_PUBLIC_ADSENSE_CLIENT` and the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables in Vercel (Production), then redeploy.
-4. `components/AdSlot.tsx` shows real ads when those variables are set; otherwise it keeps the dashed placeholder (policy-safe while you grow).
-5. Keep ad density moderate; pair with your existing cookie banner and legal pages.
+2. The site serves **`/ads.txt`** (authorized seller line for your `pub-…` ID) and a **`google-adsense-account` meta tag** plus the standard `adsbygoogle.js` snippet—after deploy, confirm `https://YOUR_DOMAIN/ads.txt` returns plain text and retry verification in AdSense.
+3. After approval, create **display ad units** and copy your publisher ID (`ca-pub-…`) and each **ad slot** ID.
+4. Set `NEXT_PUBLIC_ADSENSE_CLIENT` and the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables in Vercel (Production) if you override defaults, then redeploy.
+5. `components/AdSlot.tsx` shows real ads when slot env vars are set; otherwise it keeps the dashed placeholder until you add units.
+6. Keep ad density moderate; pair with your existing cookie banner and legal pages.

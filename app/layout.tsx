@@ -7,6 +7,7 @@ import AdSenseScript from "@/components/AdSenseScript";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import SiteFooter from "@/components/SiteFooter";
+import { ADSENSE_PUBLISHER_ID } from "@/lib/adsense-config";
 import { siteConfig } from "@/lib/seo";
 
 const geistSans = Geist({
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
   ...(googleSiteVerification
     ? { verification: { google: googleSiteVerification } }
     : {}),
+  other: {
+    "google-adsense-account": ADSENSE_PUBLISHER_ID,
+  },
 };
 
 export default function RootLayout({

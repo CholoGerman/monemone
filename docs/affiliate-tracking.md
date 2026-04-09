@@ -2,7 +2,9 @@
 
 ## Environment variables
 
-Set `NEXT_PUBLIC_SITE_URL` in Vercel for correct canonical URLs, sitemap, and robots.
+In **Vercel** → your project → **Settings** → **Environment Variables** → scope **Production** (redeploy after changes).
+
+Set `NEXT_PUBLIC_SITE_URL` for correct canonical URLs, sitemap, and robots.
 
 For production affiliate URLs, set one or more of:
 
@@ -48,3 +50,11 @@ Create a trigger on **Custom Event** `affiliate_click` and pass the variables `a
 - Registry and URL builder: `lib/affiliate-links.ts`
 - Click helper: `lib/track-affiliate-click.ts`
 - Tracked link UI: `components/AffiliateLink.tsx`, `components/AffiliateCTA.tsx`
+
+## Google AdSense (when you are ready)
+
+1. Apply in the [Google AdSense](https://www.google.com/adsense/) console once you have enough useful pages and some traffic.
+2. After approval, create **display ad units** and copy your publisher ID (`ca-pub-…`) and each **ad slot** ID.
+3. Set `NEXT_PUBLIC_ADSENSE_CLIENT` and the `NEXT_PUBLIC_ADSENSE_SLOT_*` variables in Vercel (Production), then redeploy.
+4. `components/AdSlot.tsx` shows real ads when those variables are set; otherwise it keeps the dashed placeholder (policy-safe while you grow).
+5. Keep ad density moderate; pair with your existing cookie banner and legal pages.

@@ -9,27 +9,45 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function ContactPage() {
+  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
+
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-12">
       <article className="prose prose-zinc max-w-none">
         <h1>Contact</h1>
         <p>
-          Use the channel you prefer. Replace the placeholder below with a
-          public contact email or form URL when you are ready for production.
+          Use email for corrections, disclosure questions, or partnership
+          inquiries. Please include the exact page URL you are referring to.
         </p>
         <h2>Email</h2>
-        <p>
-          <a href="mailto:hello@example.com">hello@example.com</a>
-        </p>
-        <p className="text-sm text-zinc-600">
-          Tip: create an address like <code>hello@yourdomain.com</code> and
-          forward it to your main inbox. Update this page and your legal pages
-          to match.
-        </p>
+        {email ? (
+          <p>
+            <a href={`mailto:${encodeURIComponent(email)}`}>{email}</a>
+          </p>
+        ) : (
+          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 not-prose">
+            <p className="m-0 font-medium">Public email not configured yet</p>
+            <p className="mt-2 mb-0 text-amber-900/90">
+              Add{" "}
+              <code className="rounded bg-amber-100 px-1 py-0.5">
+                NEXT_PUBLIC_CONTACT_EMAIL
+              </code>{" "}
+              in Vercel → Project → Settings → Environment Variables
+              (Production), then redeploy. See{" "}
+              <code className="rounded bg-amber-100 px-1 py-0.5">
+                .env.example
+              </code>{" "}
+              in the repo.
+            </p>
+          </div>
+        )}
         <h2>What to include</h2>
         <ul>
           <li>URL of the page you are writing about</li>
-          <li>Whether you are reporting an error, a policy concern, or a partnership idea</li>
+          <li>
+            Whether you are reporting an error, a policy concern, or a
+            partnership idea
+          </li>
         </ul>
       </article>
     </main>

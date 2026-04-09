@@ -1,9 +1,14 @@
+import type { AffiliateProgram } from "@/lib/affiliate-links";
+
+import AffiliateLink from "./AffiliateLink";
+
 type ComparisonRow = {
   app: string;
   type: string;
   earnings: string;
   effort: string;
   payoutSpeed: string;
+  program?: AffiliateProgram;
 };
 
 type ComparisonTableProps = {
@@ -26,7 +31,20 @@ export default function ComparisonTable({ rows = [] }: ComparisonTableProps) {
         <tbody>
           {rows.map((row) => (
             <tr key={row.app} className="border-t border-zinc-200">
-              <td className="px-4 py-3 font-medium text-zinc-900">{row.app}</td>
+              <td className="px-4 py-3 text-zinc-900">
+                <div className="flex flex-col gap-1">
+                  <span className="font-medium">{row.app}</span>
+                  {row.program ? (
+                    <AffiliateLink
+                      program={row.program}
+                      position={`comparison_${row.app.replace(/\s+/g, "_").toLowerCase()}`}
+                      className="w-fit text-sm font-medium text-emerald-700 underline hover:text-emerald-800"
+                    >
+                      Sign up
+                    </AffiliateLink>
+                  ) : null}
+                </div>
+              </td>
               <td className="px-4 py-3 text-zinc-700">{row.type}</td>
               <td className="px-4 py-3 text-zinc-700">{row.earnings}</td>
               <td className="px-4 py-3 text-zinc-700">{row.effort}</td>

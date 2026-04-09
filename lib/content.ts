@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 
 import AdSlot from "@/components/AdSlot";
 import AffiliateCTA from "@/components/AffiliateCTA";
+import AffiliateTopDisclosure from "@/components/AffiliateTopDisclosure";
 import ComparisonTable from "@/components/ComparisonTable";
 
 const POSTS_DIRECTORY = path.join(process.cwd(), "content", "posts");
@@ -92,6 +93,7 @@ export async function getCompiledPost(slug: string) {
     components: {
       AdSlot,
       AffiliateCTA,
+      AffiliateTopDisclosure,
       ComparisonTable,
     },
     options: {

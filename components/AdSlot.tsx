@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { ADSENSE_PUBLISHER_ID } from "@/lib/adsense-config";
+
 type AdVariant = "intro" | "mid" | "preFaq" | "home" | "default";
 
 type AdSlotProps = {
@@ -11,7 +13,7 @@ type AdSlotProps = {
   className?: string;
 };
 
-const PUB = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim();
+const PUB = ADSENSE_PUBLISHER_ID;
 
 function slotForVariant(variant: string): string | undefined {
   const v = variant as AdVariant;
@@ -84,9 +86,12 @@ export default function AdSlot({
       </p>
       <p className="mt-1 text-sm text-zinc-600">{label}</p>
       <p className="mt-2 text-xs text-zinc-500">
-        Set{" "}
-        <code className="rounded bg-zinc-200 px-1">NEXT_PUBLIC_ADSENSE_CLIENT</code>{" "}
-        and slot env vars to show live ads. See{" "}
+        AdSense publisher ID is configured. Create{" "}
+        <strong>display ad units</strong> in AdSense and set{" "}
+        <code className="rounded bg-zinc-200 px-1">
+          NEXT_PUBLIC_ADSENSE_SLOT_DEFAULT
+        </code>{" "}
+        (or per-placement slots) in Vercel. See{" "}
         <code className="rounded bg-zinc-200 px-1">.env.example</code>.
       </p>
     </aside>

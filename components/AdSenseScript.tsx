@@ -1,16 +1,16 @@
 import Script from "next/script";
 
-const CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim();
+import { ADSENSE_PUBLISHER_ID } from "@/lib/adsense-config";
 
 export default function AdSenseScript() {
-  if (!CLIENT) {
+  if (!ADSENSE_PUBLISHER_ID) {
     return null;
   }
 
   return (
     <Script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(CLIENT)}`}
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(ADSENSE_PUBLISHER_ID)}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
     />

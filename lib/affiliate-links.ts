@@ -15,9 +15,10 @@ export type AffiliateProgram =
   | "gamee";
 
 const DEFAULT_URLS: Record<AffiliateProgram, string> = {
-  honeygain: "https://www.honeygain.com/",
-  swagbucks: "https://www.swagbucks.com/",
-  ysense: "https://www.ysense.com/",
+  honeygain: "https://join.honeygain.com/XRCHO92F09",
+  swagbucks:
+    "https://www.swagbucks.com/p/register?rb=232665570&rp=1",
+  ysense: "https://www.ysense.com/?rb=232665816",
   inboxdollars: "https://www.inboxdollars.com/",
   toluna: "https://www.toluna.com/",
   gamee: "https://gamee.com/",

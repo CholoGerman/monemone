@@ -9,7 +9,7 @@ export const siteConfig = {
   description: DEFAULT_DESCRIPTION,
   baseUrl:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "https://example.com",
+    "https://monemone.vercel.app",
 };
 
 export function buildMetadata({

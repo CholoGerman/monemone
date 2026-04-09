@@ -3,7 +3,7 @@
 Do these in the Search Console UI after each production deploy.
 
 1. Open your property (domain or URL-prefix) for the **same** URL you use in `NEXT_PUBLIC_SITE_URL`.
-2. Go to **Sitemaps** and submit: `https://YOUR_DOMAIN/sitemap.xml`
+2. Go to **Sitemaps** and submit (example): `https://monemone.vercel.app/sitemap.xml`
 3. In **Pages** (or **Indexing**), watch for crawl errors. Fix 404s and accidental `noindex`.
 4. Pick **one** canonical host: either `www` or non-`www`. In Vercel → Project → **Domains**, set the primary domain and add a redirect from the alternate so users and Google see a single URL.
 5. After publishing new posts, you can use **URL Inspection** → **Request indexing** for 2–3 important URLs (use sparingly).

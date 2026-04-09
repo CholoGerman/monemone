@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
+import AdSenseScript from "@/components/AdSenseScript";
 import CookieBanner from "@/components/CookieBanner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import SiteFooter from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/seo";
 
@@ -47,12 +49,18 @@ export default function RootLayout({
             <Link href="/" className="text-lg font-semibold tracking-tight">
               {siteConfig.name}
             </Link>
-            <nav className="flex gap-5 text-sm text-zinc-700">
+            <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-700">
               <Link href="/" className="hover:underline">
                 Home
               </Link>
               <Link href="/blog" className="hover:underline">
                 Blog
+              </Link>
+              <Link href="/about" className="hover:underline">
+                About
+              </Link>
+              <Link href="/contact" className="hover:underline">
+                Contact
               </Link>
             </nav>
           </div>
@@ -60,6 +68,8 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <CookieBanner />
+        <GoogleAnalytics />
+        <AdSenseScript />
       </body>
     </html>
   );

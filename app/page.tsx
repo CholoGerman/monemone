@@ -33,7 +33,7 @@ export default function HomePage() {
         ) : null}
       </section>
 
-      <AdSlot label="Homepage ad placement" />
+      <AdSlot label="Homepage ad placement" variant="home" />
 
       <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight text-zinc-900">

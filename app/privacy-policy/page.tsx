@@ -20,7 +20,10 @@ export default function PrivacyPolicyPage() {
         <h2>Information we collect</h2>
         <p>
           We may collect anonymized usage data, browser information, and
-          referral data through analytics tools.
+          referral data through analytics tools. When enabled, we use{" "}
+          <strong>Google Analytics 4</strong> to understand traffic and content
+          performance. See Google&apos;s privacy documentation for how GA4
+          processes data.
         </p>
         <h2>Advertising and third parties</h2>
         <p>
@@ -28,7 +31,10 @@ export default function PrivacyPolicyPage() {
           partners may use cookies to personalize ads and measure performance.
         </p>
         <h2>Contact</h2>
-        <p>For policy requests, contact us through the contact form.</p>
+        <p>
+          For policy requests, contact us through the{" "}
+          <a href="/contact">contact page</a>.
+        </p>
       </article>
     </main>
   );

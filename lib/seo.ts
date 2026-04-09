@@ -30,10 +30,12 @@ export function buildMetadata({
   title,
   description = DEFAULT_DESCRIPTION,
   path = "",
+  openGraphType = "website",
 }: {
   title: string;
   description?: string;
   path?: string;
+  openGraphType?: "website" | "article";
 }): Metadata {
   const absoluteUrl = new URL(path, siteConfig.baseUrl).toString();
 
@@ -47,7 +49,7 @@ export function buildMetadata({
       url: absoluteUrl,
       siteName: siteConfig.name,
       locale: "en_US",
-      type: "article",
+      type: openGraphType,
     },
     twitter: {
       card: "summary_large_image",
@@ -61,14 +63,37 @@ export function buildPostMetadata({
   title,
   description,
   slug,
+  date,
 }: {
   title: string;
   description: string;
   slug: string;
+  date: string;
 }): Metadata {
-  return buildMetadata({
+  const path = `/blog/${slug}`;
+  const absoluteUrl = new URL(path, siteConfig.baseUrl).toString();
+  const publishedTime = /^\d{4}-\d{2}-\d{2}$/.test(date)
+    ? `${date}T12:00:00.000Z`
+    : new Date(date).toISOString();
+
+  return {
     title,
     description,
-    path: `/blog/${slug}`,
-  });
+    alternates: { canonical: absoluteUrl },
+    openGraph: {
+      title,
+      description,
+      url: absoluteUrl,
+      siteName: siteConfig.name,
+      locale: "en_US",
+      type: "article",
+      publishedTime,
+      modifiedTime: publishedTime,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
 }

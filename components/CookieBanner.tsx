@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 const STORAGE_KEY = "cookie-consent-status";
@@ -26,8 +27,11 @@ export default function CookieBanner() {
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-300 bg-white/95 px-4 py-4 shadow-lg backdrop-blur">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-zinc-700">
-          We use cookies for analytics, ads, and affiliate tracking. By
-          continuing, you agree to our cookie policy.
+          We use cookies for analytics, ads, and affiliate tracking. See our{" "}
+          <Link href="/cookie-policy" className="font-medium underline">
+            Cookie Policy
+          </Link>
+          . By continuing, you accept cookies as described there.
         </p>
         <button
           onClick={acceptCookies}

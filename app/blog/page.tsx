@@ -1,11 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { getAllPosts } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Blog",
-  description: "Money app strategies, comparisons, and tested guides.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Blog — money app guides",
+  description:
+    "Money app strategies, comparisons, and tested guides for US readers.",
+  path: "/blog",
+  openGraphType: "website",
+});
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();

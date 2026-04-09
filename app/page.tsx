@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import AdSlot from "@/components/AdSlot";
 import { getAllPosts } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Make money with your phone (US)",
+  description:
+    "Honest US guides to apps that pay: surveys, passive income, realistic earnings, and how to combine platforms without the hype.",
+  path: "/",
+  openGraphType: "website",
+});
 
 export default function HomePage() {
   const posts = getAllPosts();
